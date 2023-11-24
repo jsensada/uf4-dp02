@@ -1,0 +1,16 @@
+[Unit]
+Description=Gunicorn instance to serve app-production 1
+After=network.target
+
+[Service]
+User=yourusername
+Group=www-data
+WorkingDirectory=/opt/app/uf4-dp02
+Environment="INSTANCE=app1"
+Environment="PORT=5001"
+Environment="LOGFILE=app1.log"
+ExecStart=/usr/local/bin/gunicorn -w 4 -b 0.0.0.0:5001 app-production:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
