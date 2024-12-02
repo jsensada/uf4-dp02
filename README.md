@@ -6,6 +6,7 @@ sudo apt update
 sudo apt install nginx -y
 sudo apt install python3
 sudo apt install python3-pip
+sudo apt install gunicorn
 sudo mkdir /opt/app
 sudo chown -R jsensada:jsensada /opt/app
 cd /opt/app
@@ -21,11 +22,12 @@ sudo cp service-app1.service /etc/systemd/system/
 sudo systemctl enable service-app1
 sudo systemctl start service-app1
 sudo cp /etc/systemd/system/service-app1.service /etc/systemd/system/service-app2.service
+sudo vi /etc/systemd/system/service-app2.service # Update service-app2.service file accordingly
 sudo systemctl enable service-app2
 sudo systemctl start service-app2
 sudo cp nginx.conf /etc/nginx/sites-enabled/default
 sudo service nginx restart
-curl htpp://127.0.0.1/
+curl http://127.0.0.1/
 curl http://127.0.0.1/app1/
 curl http://127.0.0.1/app2/
 ```
